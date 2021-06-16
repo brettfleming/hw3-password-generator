@@ -1,1 +1,11 @@
-# hw3-password-generator
+# password-generator
+
+
+## Task
+    For this project the task was to create a password generator that takes the selected criteria from the user and generates a password that fits that criteria. 
+
+## The project
+    For this project we were giving the html code and the bare minimum for the javascript code to work with, even thought we didnt need to edit the html code I ended up adding 
+    so new things to it to help me with the javascript code down the line. just added some checkboxs for the fallowing criteria, include uppercase letters, include lowercase letters, include numbers, and finally include symbols. A option to select the length of the password was also added. I didnt change the styling at all but if I were to come back to this project I would add some styling to the elements that I added to the html. For the javascript code that they gave us to start with I pretty much threw it out and started from scratch since I was going to do it a little diffrent then they wanted us to do, they wanted us to use prompts to collect user input, but I decided to add the form elements to the html and pull those input values from the document with the .getElementById method and signed it to a new variable to be used later. The main part of this project that makes this all work is the math.random line of code that allows us to randomly generate numbers to select a value from an a string of values. A for loop is used to to interate for the length of the password whitch the user specifies in the begining. If the user inputs an invalid value they are promted to input a valid value to continue. 
+
+    A bug that was found during testing was that the way in which the password is generated would cause issues if the length of the password was not evenly disviable by the count of types selected (upper, lower, number, and symbol) it would cause the password to be generated too long, this was easily fixed by adding a slice method to cut the length of the final password down to the correct length.  

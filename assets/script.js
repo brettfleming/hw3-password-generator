@@ -17,14 +17,39 @@ const randomfunction = {
 
 // Write password to the #password input
 generateElement.addEventListener("click", () => {
-  const length = +lengthElement.value;
+  let length = lengthElement.value;
   const hasLower = lowercaseElement.checked;
   const hasUpper = uppercaseElement.checked;
   const hasNumber = numbersElement.checked;
   const hasSymbol = symbolsElement.checked;
   
-  passwordElement.innerText = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
+  if (length < 8 || length > 128) {
+    length = prompt("please enter a valid length.")
+  };
+  
+    passwordElement.innerText = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
 });
+function generatePassword(lower, upper, number, symbol, length) {
+  let generatedPassword = '';
+// need to count the types being selected
+  const typesCount = lower + upper + number + symbol;
+  // then we need to filter out the ones coming back as false
+  const typesArray = [ { lower }, { upper}, {number}, {symbol}].filter(item => Object.values(item)[0]);
+
+if (typesCount === 0) {
+  return '';
+}
+  for (let i = 0; i < length; i += typesCount) {
+    typesArray.forEach(type => {
+      const functionName = Object.keys(type)[0];
+
+      generatedPassword += randomfunction[functionName]();
+    });
+  }
+  //if length isnt diviable by types counted evenly the password with be returned too long this line cuts it down to the length
+  var finalpassword = generatedPassword.slice(0, length); 
+  return finalpassword;
+}
 
 
 function randomLower() {
