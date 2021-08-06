@@ -2,21 +2,6 @@
 const passwordElement = document.getElementById('password')
 const generateElement = document.getElementById('generate')
 
-function randomLower() {
-  const lower = "abcdefghijklmnopqrstuvwxyz"
-  return lower[Math.floor(Math.random() * 26)]
-}
-function randomUpper() {
-  const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-  return upper[Math.floor(Math.random() * 26)]
-}
-function randomNumber() {
-  return Math.floor(Math.random() * 10)
-}
-function randomSymbol() {
-  const symbols = "!@#$%^&*(){}[]?"
-  return symbols[Math.floor(Math.random() * symbols.length)]
-}
 
 
 
@@ -32,26 +17,26 @@ const symbolsElement = document.getElementById('symbols')
 
 
 const randomfunction = {
-  lower: randomLower,
-  upper: randomUpper,
+  lowercase: randomLower,
+  uppercase: randomUpper,
   number: randomNumber,
   symbol: randomSymbol
 };
 
 function generatePassword(lowercase, uppercase, number, symbol, length) {
   let generatedPassword = '';
-// need to count the types being selected
+  // need to count the types being selected
   const Count = lowercase + uppercase + number + symbol;
   // then we need to filter out the ones coming back as false
   const typesArr = [ {lowercase }, { uppercase }, { number }, { symbol } ].filter(item => Object.values(item)[0]);
-
-if (Count === 0) {
-  return '';
-}
+  
+  if (Count === 0) {
+    return '';
+  }
   for (let i = 0; i < length; i += Count) {
     typesArr.forEach(type => {
       const function1 = Object.keys(type)[0];
-
+      
       generatedPassword += randomfunction[function1]();
     });
   }
@@ -60,6 +45,21 @@ if (Count === 0) {
   return password;
 }
 
+function randomLower() {
+  const lower = "abcdefghijklmnopqrstuvwxyz"
+  return lower[Math.floor(Math.random() * 26)]
+}
+function randomUpper() {
+  const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  return upper[Math.floor(Math.random() * 26)]
+}
+function randomNumber() {
+  return Math.floor(Math.random() * 10)
+}
+function randomSymbol() {
+  const symbols = "!@#$%^&*(){}[]?"
+  return symbols[Math.floor(Math.random() * symbols.length)]
+}
 
 
 
