@@ -14,7 +14,7 @@ function randomNumber() {
   return Math.floor(Math.random() * 10)
 }
 function randomSymbol() {
-  const symbols = "!@#$%^&*(){}[]=<>/,.?"
+  const symbols = "!@#$%^&*(){}[]?"
   return symbols[Math.floor(Math.random() * symbols.length)]
 }
 
@@ -38,12 +38,12 @@ const randomfunction = {
   symbol: randomSymbol
 };
 
-function generatePassword(lower, upper, number, symbol, length) {
+function generatePassword(lowercase, uppercase, number, symbol, length) {
   let generatedPassword = '';
 // need to count the types being selected
-  const Count = lower + upper + number + symbol;
+  const Count = lowercase + uppercase + number + symbol;
   // then we need to filter out the ones coming back as false
-  const typesArr = [ {lower}, { upper}, {number}, {symbol}].filter(item => Object.values(item)[0]);
+  const typesArr = [ {lowercase }, { uppercase }, { number }, { symbol } ].filter(item => Object.values(item)[0]);
 
 if (Count === 0) {
   return '';
@@ -65,14 +65,14 @@ if (Count === 0) {
 
 generateElement.addEventListener("click", function() {
   let length = lengthElement.value;
-  const lowerSelected = lowercaseElement.checked;
-  const upperSelected = uppercaseElement.checked;
-  const numberSelected = numbersElement.checked;
-  const symbolSelected = symbolsElement.checked;
+  const lowerCaseSelected = lowercaseElement.checked;
+  const symbolsSelected = symbolsElement.checked;
+  const upperCaseSelected = uppercaseElement.checked;
+  const numbersSelected = numbersElement.checked;
   
   if (length < 8 || length > 128) {
     length = prompt("please enter a valid length.")
   };
   
-    passwordElement.innerText = generatePassword(lowerSelected, upperSelected, numberSelected, symbolSelected, length);
+    passwordElement.innerText = generatePassword(lowerCaseSelected, upperCaseSelected, numbersSelected, symbolsSelected, length);
 });
