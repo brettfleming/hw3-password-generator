@@ -21,11 +21,11 @@ const randomfunction = {
   lowercase: randomLower,
   uppercase: randomUpper,
   number: randomNumber,
-  symbol: randomSymbol
+  symbol: randomSymbol,
   symbol2: randomSymbol2
 };
 
-function generatePassword(lowercase, uppercase, number, symbol, symbol2 length) {
+function generatePassword(lowercase, uppercase, number, symbol, symbol2, length) {
   let generatedPassword = '';
   // need to count the types being selected
   const Count = lowercase + uppercase + number + symbol + symbol2;
@@ -62,7 +62,7 @@ function randomSymbol() {
   const symbols = "!@#$%^&*(){}[]?"
   return symbols[Math.floor(Math.random() * symbols.length)]
 }
-function randomSymbol() {
+function randomSymbol2() {
   const symbols2 = "-_=+d`~/\|<>"
   return symbols2[Math.floor(Math.random() * symbols2.length)]
 }
@@ -73,6 +73,7 @@ generateElement.addEventListener("click", function() {
   let length = lengthElement.value;
   const lowerCaseSelected = lowercaseElement.checked;
   const symbolsSelected = symbolsElement.checked;
+  const symbols2Selected = symbols2Element.checked;
   const upperCaseSelected = uppercaseElement.checked;
   const numbersSelected = numbersElement.checked;
   
@@ -80,5 +81,5 @@ generateElement.addEventListener("click", function() {
     length = prompt("please enter a valid length.")
   };
   
-    passwordElement.innerText = generatePassword(lowerCaseSelected, upperCaseSelected, numbersSelected, symbolsSelected, length);
+    passwordElement.innerText = generatePassword(lowerCaseSelected, upperCaseSelected, numbersSelected, symbolsSelected, symbols2Selected, length);
 });
