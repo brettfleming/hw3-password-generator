@@ -13,6 +13,7 @@ const lowercaseElement = document.getElementById('lowercase')
 const uppercaseElement = document.getElementById('uppercase')
 const numbersElement = document.getElementById('numbers')
 const symbolsElement = document.getElementById('symbols')
+const symbols2Element = document.getElementById('symbols2')
 
 
 
