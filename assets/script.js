@@ -22,14 +22,15 @@ const randomfunction = {
   uppercase: randomUpper,
   number: randomNumber,
   symbol: randomSymbol
+  symbol2: randomSymbol2
 };
 
-function generatePassword(lowercase, uppercase, number, symbol, length) {
+function generatePassword(lowercase, uppercase, number, symbol, symbol2 length) {
   let generatedPassword = '';
   // need to count the types being selected
-  const Count = lowercase + uppercase + number + symbol;
+  const Count = lowercase + uppercase + number + symbol + symbol2;
   // then we need to filter out the ones coming back as false
-  const typesArr = [ {lowercase }, { uppercase }, { number }, { symbol } ].filter(item => Object.values(item)[0]);
+  const typesArr = [ {lowercase }, { uppercase }, { number }, { symbol }, {symbol2} ].filter(item => Object.values(item)[0]);
   
   if (Count === 0) {
     return '';
@@ -60,6 +61,10 @@ function randomNumber() {
 function randomSymbol() {
   const symbols = "!@#$%^&*(){}[]?"
   return symbols[Math.floor(Math.random() * symbols.length)]
+}
+function randomSymbol() {
+  const symbols2 = "-_=+d`~/\|<>"
+  return symbols2[Math.floor(Math.random() * symbols2.length)]
 }
 
 
